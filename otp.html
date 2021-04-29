@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body onload="run()" id="mybody">
+    <h1 style="display:inline">Dear : </h1>
+    <h1 id="flname" style="display:inline;margin-left:0"></h1>
+    <h4>Thank you for your Enquiry .A 4 digits verification number has been sent to your mobile number</h4>
+    <br>
+    <div>Your Mobile Number Is:
+        <span id='getmnumber'></span>
+    </div>
+    <p id="info">Please enter the following box and submit for confirmation:    OTP<span id="no"></span></p>
+
+       <br>
+    <form id="form2" onsubmit="return verify()">
+        <input type="tel" id="getotp" placeholder="Enter OTP">
+        <br><br>
+        <input id="btn" type="submit" value="Validate">
+    </form>
+    <a href="otp.html" style="margin-left:42%">Resend OTP</a>
+    <script>
+        var get = localStorage.getItem("value");
+        document.getElementById("getmnumber").innerHTML = get;
+        var take_otp = localStorage.getItem("otps");
+        document.getElementById("no").innerHTML = take_otp;
+        var take_name = localStorage.getItem("getting");
+        document.getElementById("flname").innerHTML = take_name;
+        var ot = ""; 
+
+        function run() {
+            var num = "1234567890";
+
+            for (var i = 0; i < 4; i++) {
+
+                ot += num[Math.floor(Math.random() * 10)];  //random method 0 to 1
+            }
+            document.getElementById("no").innerHTML = ot;
+
+
+
+        }
+
+
+        //document.getElementById("no").innerHTML=ot;
+
+        function verify() {
+            var take_value = document.getElementById("getotp").value;
+            if (take_value == ot) {
+                alert("OTP Verification Successfully Submited");
+
+                window.location.href = "index.html";
+            } else {
+                alert("Incorrect OTP");
+
+                if (confirm("Do You Want To Go Homepage")) {
+
+                    window.location.href = "index.html";
+                } if (false) {
+                    window.location.href = "otp.html";
+                }
+            } return false;
+        }
+    </script>
+</body>
+
+</html>
