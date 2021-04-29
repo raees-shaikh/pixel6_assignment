@@ -1,0 +1,84 @@
+*{
+ margin:0;
+ padding:0;
+ box-sizing:border-box;
+}
+#form1{
+border:1px solid black;
+border-radius:4px;
+margin-left:35%;
+padding:10px;
+width:300px;
+height:auto;
+padding-left:25px;
+}
+input{
+padding:5px;
+border-radius:5px;
+margin-left:15px;
+}
+label{
+    margin-left:15px;
+}
+#submit{
+margin-left:30px;
+
+}
+span{
+margin-left:15px;
+    color:red;
+}
+img{
+    height:20px;
+    width:20px;
+}
+h4{
+
+    text-transform:capitalize;
+    margin-left:20%;
+}
+#info{
+    margin-left:20%;
+}
+#form2{
+
+        margin-left:35%;
+        padding:10px;
+           
+        padding-left:25px;
+}
+#btn{
+    margin-left:8%;
+}
+small{
+    margin:15px;
+}
+h1{
+    margin-left:20%;
+}
+div{
+    margin-left:20%;
+}#deco{
+    background-color: darkcyan;
+    margin:0;
+    text-align:center;
+}
+body{
+
+    background-color: darksalmon;
+}
+#form1{
+    border:1px solid purple;
+    background-color: lightblue;
+}#brand{
+    color:white;
+}
+#mybody{
+    background-color: darkolivegreen;
+}
+#getmnumber{
+    color:white;
+}
+#no{
+    color:white;
+}
