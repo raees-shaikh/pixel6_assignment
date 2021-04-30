@@ -17,14 +17,14 @@
 		<hr>
 		<br>
 		<label>Full Name</label><br>
-		<input id="fname" type="text" name="fname">
+		<input id="fname" type="text" name="fname" onkeyup="namecheck()">
 		<br><span id="ferror"></span><br>
 
 		<label>Email</label><br>
-		<input id="email" type="email" name="email">
+		<input id="email" type="email" name="email" onkeyup="emailcheck()">
 		<br><span id="error"></span><br>
 		<label>Mobile</label><br>
-		<input id="phoneNumber" type="text" name="mobile" maxlength="16"><span id="jio"></span>
+		<input id="phoneNumber" type="text" name="mobile" maxlength="16" onkeyup="numcheck()"><span id="jio"></span>
 		<small id="st"></small>
 		<br><span id="merror"></span><br>
 		<input type="submit" value="submit" id="submit">
@@ -33,6 +33,7 @@
 
 	<script>
 
+    
 		function validate() {
 
 			var full_name = document.getElementById("fname").value;
@@ -40,28 +41,26 @@
 
 			if (full_name.length <= 4 && full_name.length >= 1) {
 				document.getElementById("ferror").innerHTML = "Characters should be more than 4";
-
-
+              
+                return false;
 			}
-			else if (full_name == "") {
+			 if ((full_name == "") || (full_name == "null") || (full_name == "undefined")) {
 				document.getElementById("ferror").innerHTML = "Please fill the Full Name";
-
-
-
+                  
 			}
 
 			else if (!isNaN(full_name)) {
 
 				document.getElementById("ferror").innerHTML = "Only alphbate allow";
-
+                  return false;
 			}
 			var get_email = document.getElementById("email").value;
 
 			if ((get_email == "") || (get_email == "undefined") || (get_email == "null")) {
 
 				document.getElementById("error").innerHTML = "Please Fill The Email";
-
-
+                
+                
 			}
 			else if (get_email.indexOf("@") <= 0) {
 
@@ -88,24 +87,43 @@
 				document.getElementById("merror").innerHTML = "Only 10 Digits Allow";
 				return false;
 			}
+            
+     
+			 if ((full_name == "") || (full_name == "null") || (full_name == "undefined")) {
+				document.getElementById("ferror").innerHTML = "Please fill the Full Name";
+                  return false;
+			}
+             
+			if ((get_email == "") || (get_email == "undefined") || (get_email == "null")) {
 
+            document.getElementById("error").innerHTML = "Please Fill The Email";
+                     return false;
 
+                    }
 
+					else if(phone.charAt(1)=="1" || phone.charAt(1) =="6")
+			 {
+				document.getElementById("jio").innerHTML = "Invalid Number";	
+					return false;
+			 }
 
 			else {
-
+				document.getElementById("merror").innerHTML = " ";
 				var check = document.getElementById("fname").value;
 				var ary = check.split(" ");
 
 
 
+                
 
-
+					
 				var get_mob = document.getElementById("phoneNumber").value;
 				window.localStorage.setItem("value", get_mob);
 
-				window.localStorage.setItem("getting", ary[0]);
+				window.localStorage.setItem("getting", ary[1]);
 				window.location.href = "otp.html";
+			
+
 			}
 
 
@@ -120,7 +138,7 @@
 
 
 
-
+			
 
 
 		}
@@ -357,10 +375,44 @@
 			}*/
 			if (key_event.value >= "(1000" && key_event.value <= "(620") {
 				document.getElementById("jio").innerHTML = "Invalid Number";
+				document.getElementById("merror").innerHTML = " ";
+				return false;
+				
 			}
 
 		});
+         function namecheck(){
+           var sub=document.getElementById("fname").value;
+		   if(sub.length>4){
+			   document.getElementById("ferror").innerHTML=" ";
+		   } if(sub.length==" "){
 
+			document.getElementById("ferror").innerHTML="Please Fill The Fullname ";
+		   }
+
+		 }
+		 function emailcheck(){
+           var subemail=document.getElementById("email").value;
+		   if(subemail.length>7){
+			   document.getElementById("error").innerHTML=" ";
+		   }if(subemail.length==" "){
+			document.getElementById("error").innerHTML="Please Fill The Email";
+		   }
+
+		 }
+
+		 function numcheck(){
+           var subnum=document.getElementById("phoneNumber").value;
+		   if(subnum.length==10){
+			   document.getElementById("merror").innerHTML=" ";
+		   }
+		   if(subnum.length==" ")
+              {
+				document.getElementById("merror").innerHTML="Please Fill Mobile Number";
+				document.getElementById("jio").innerHTML=" ";
+				document.getElementById("st").innerHTML=" ";
+			  }
+		 }
 
 	</script>
 </body>
